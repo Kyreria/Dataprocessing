@@ -20,8 +20,13 @@ rule merged_results:
     output:
         'results/merged.txt'
     shell:
-        'cat {input} > {output}'
+        "cat {input} > {output} | echo '{input} are successfully processed' >> {output}"
 
 rule clean:
     shell:
         'rm results/*.txt'
+
+onsuccess:
+    print("Workflow finished without any error.")
+onerror:
+    print("Workflow encountered an error, check the log files in the .snakemake folder")
