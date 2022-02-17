@@ -16,7 +16,7 @@ rule quantify_genes:
 
 rule merged_results:
     input:
-        expand('{sample}.txt',sample=SAMPLES)
+        expand('results/{sample}.txt',sample=SAMPLES)
     output:
         'results/merged.txt'
     shell:
