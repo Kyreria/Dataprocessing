@@ -21,3 +21,7 @@ rule merged_results:
         'results/merged.txt'
     shell:
         'cat {input} > {output}'
+
+rule clean:
+    shell:
+        'rm results/*.txt'
