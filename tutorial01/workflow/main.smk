@@ -20,4 +20,4 @@ rule merged_results:
     output:
         'results/merged.txt'
     shell:
-        'echo {input} > {output}'
+        'cat {input} > {output}'
