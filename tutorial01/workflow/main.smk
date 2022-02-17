@@ -10,7 +10,7 @@ rule quantify_genes:
         r1 = 'resources/{sample}.R1.fastq.gz',
         r2 = 'resources/{sample}.R2.fastq.gz'
     output:
-        'results/{sample}.txt'
+        temp('results/{sample}.txt')
     shell:
         'echo {input.genome} {input.r1} {input.r2} > {output}'
 
