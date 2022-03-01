@@ -20,7 +20,10 @@ rule merged_results:
     output:
         'results/merged.txt'
     shell:
-        "cat {input} > {output} | echo '{input} are successfully processed' >> {output}"
+        """
+        cat {input} > {output}
+        echo '{input} are successfully processed' >> {output}
+        """
 
 rule clean:
     shell:

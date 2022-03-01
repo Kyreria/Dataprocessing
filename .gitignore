@@ -1,2 +1,3 @@
 # git ignored files/directories
 .idea
+.snakemake
