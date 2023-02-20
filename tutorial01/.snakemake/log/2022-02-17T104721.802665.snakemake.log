@@ -1,6 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 7 of /homes/dhaandrikman/Dataprocessing_minor/tutorial01/workflow/Snakefile:
-Missing input files for rule quantify_genes:
-genome.fa
-data/Sample1.R1.fastq.gz
-data/Sample1.R2.fastq.gz
