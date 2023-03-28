@@ -1,0 +1,1 @@
+resources/genome.fa resources/Sample1.R1.fastq.gz resources/Sample1.R1.fastq.gz 
