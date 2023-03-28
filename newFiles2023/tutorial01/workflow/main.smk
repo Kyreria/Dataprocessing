@@ -1,8 +1,8 @@
-SAMPLES = ["Sample1", "Sample2"]
+SAMPLES = ["Sample1", "Sample2", "Sample3"]
 
 rule all:
     input:
-        expand("results/{sample}.txt", sample = SAMPLES)
+        "results/merged.txt"
 
 rule quantify_genes:
     input:
@@ -13,6 +13,17 @@ rule quantify_genes:
         "results/{sample}.txt"
     shell:
         "echo {input.genome} {input.r1} {input.r2} > {output}"
+
+rule merged_results:
+    input:
+        expand('results/{sample}.txt',sample=SAMPLES)
+    output:
+        'results/merged.txt'
+    shell:
+        """
+        cat {input} > {output}
+        echo '{input} are successfully processed' >> {output}
+        """
 
 rule clean:
     shell:
