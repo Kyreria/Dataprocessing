@@ -9,10 +9,10 @@ rule bwa_map:
         "resources/genome.fa",
         "resources/samples/{sample}.fastq"
     output:
-        "mapped_reads/{sample}.bam"
+        "results/mapped_reads/{sample}.bam"
     message: "Executing bwa mem on the following {input} to generate the following {output}"
     shell:
-        "bwa mem {input} | samtools view -sb -> {output}"
+        "bwa mem {input} | samtools view -Sb -> {output}"
 
 rule samtools_sort:
     input:

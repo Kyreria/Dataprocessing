@@ -1,0 +1,4 @@
+resources/genome.fa resources/Sample1.R1.fastq.gz resources/Sample1.R1.fastq.gz 
+resources/genome.fa resources/Sample2.R1.fastq.gz resources/Sample2.R1.fastq.gz 
+resources/genome.fa resources/Sample3.R1.fastq.gz resources/Sample3.R1.fastq.gz 
+results/Sample1.txt results/Sample2.txt results/Sample3.txt are successfully processed
