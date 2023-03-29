@@ -1,0 +1,13 @@
+#configfile config.yaml
+genome: resources/A
+ext : .fa
+samples:
+    A : /resources/A.bam
+    B : /resources/B.bam
+    C : /resources/C.bam
+    D : /resources/D.bam
+    E : /resources/E.bam
+    F : /resources/F.bam
+    G : /resources/G.bam
+    H : /resources/H.bam
+    I : /resources/I.bam

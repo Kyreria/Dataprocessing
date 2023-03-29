@@ -1,0 +1,22 @@
+import os
+from snakemake.remote.NCBI import RemoteProvider as NCBIRemoteProvider
+NCBI = NCBIRemoteProvider(email="d.haandrikman@st.hanze.nl")
+SAMPLES = [x for x in "ABDEFGHIJ"]
+
+rule all:
+    input:
+        expand("resources/bioinf/{sample}.bam", sample=SAMPLES),
+        NCBI.remote("AAH32336.1.fasta",db="protein")
+
+rule download_ncbi:
+    input:
+        NCBI.remote("KY785484.1.fasta", db="nuccore")
+    message: "Downloading data from the NCBI network"
+    run:
+        outputName = os.path.basename("test.fasta")
+        shell("mv {input} {outputName}")
+
+configfile: "config/config.yaml"
+include: "rules/bioinf_download.smk"
+
+
