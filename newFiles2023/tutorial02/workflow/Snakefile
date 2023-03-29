@@ -8,6 +8,8 @@ rule bwa_map:
     input:
         "resources/genome.fa",
         "resources/samples/{sample}.fastq"
+    benchmark:
+        "benchmarks/{sample}.bwa.benchmark.txt"
     output:
         "results/mapped_reads/{sample}.bam"
     message: "Executing bwa mem on the following {input} to generate the following {output}"
@@ -52,16 +54,22 @@ rule report:
         "results/out.html"
     run:
         from snakemake.utils import report
+
         with open(input[0]) as f:
             n_calls = sum(1 for line in f if not line.startswith("#"))
 
         report("""
         An example workflow
-        ==================================
-        
-        Reads were mapped to the Yeas reference genome
+        ===================================
+
+        Reads were mapped to the Yeas reference genome 
         and variants were called jointly with
         SAMtools/BCFtools.
-        
+
         This resulted in {n_calls} variants (see Table T1_).
-        """, output[0], metadata="Author : Dennis Haandrikman", T1=input[0])
+        """,output[0],metadata="Author: D Haandrikman",T1=input[0])
+
+rule clean:
+    message: "Cleaning the results directory."
+    shell:
+        "rm -r results/"
