@@ -1,4 +1,6 @@
 SAMPLES = ["A", "B", "C"]
+wdir= "/students/2022-2023/Thema11/dataprocessss/study02_data/"
+FASTQ_DIR= "samples/"
 
 rule all:
     input:
@@ -6,8 +8,8 @@ rule all:
 
 rule bwa_map:
     input:
-        "resources/genome.fa",
-        "resources/samples/{sample}.fastq"
+        wdir + "genome.fa",
+        wdir + FASTQ_DIR + "{sample}.fastq"
     benchmark:
         "benchmarks/{sample}.bwa.benchmark.txt"
     output:
@@ -37,7 +39,7 @@ rule samtools_index:
 
 rule bcftools_call:
     input:
-        fa="resources/genome.fa",
+        fa= wdir + "genome.fa",
         bam=expand("results/sorted_reads/{sample}.bam", sample=SAMPLES),
         bai=expand("results/sorted_reads/{sample}.bam", sample=SAMPLES)
     output:
